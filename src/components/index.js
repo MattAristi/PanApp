@@ -1,0 +1,1 @@
+export {default as CategoryItems} from './category-items'
