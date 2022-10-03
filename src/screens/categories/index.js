@@ -5,7 +5,7 @@ import {styles} from './styles';
 
 const Categories = ({navigation}) => {
     const onSelected= (item) => {
-        navigation.navigate('Products', {name: item.title});
+        navigation.navigate('Products', {name: item.title, categoryId:item.id});
     }
     const renderItem = ({item}) =>  <CategoryItems item={item} onSelected={onSelected}/>
        

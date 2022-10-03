@@ -1,4 +1,4 @@
-import {Categories, Product, Products} from '../screens/index'
+import {Categories, Product, Products} from '../screens'
 
 import React from 'react';
 import {colors} from '../../src/constants/thems/colors';
