@@ -5,8 +5,7 @@ export const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor: colors.primary,
-        justifyContent:"center",
-        alignItems: "center",
+        
         padding:10,
         marginHorizontal:20,
         borderRadius:10,
@@ -19,6 +18,7 @@ export const styles = StyleSheet.create({
 
     },
     title:{
+        textAlign:"center",
         fontFamily:'Lato-Bold',
         fontSize:18,
     },

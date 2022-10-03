@@ -1,14 +1,16 @@
 import { Button, FlatList, Text, View } from "react-native"
 
-import ProductItem from "../../components";
+import {ProductItem} from "../../components";
 import {products} from '../../constants/data';
+import react from 'react';
+import { styles } from "./styles";
 
-const Products = ({navigation, route}) => {
-    const {categoryId}=route.params;
+const Products = ({ navigation, route}) => {
+    const {categoryId} = route.params;
     const productsFiltered = products.filter(product => product.categoryId === categoryId);
 
-    const onSelected = (item)=> {
-        console.warn('item',item);
+    const onSelected = (item) => {
+        navigation.navigate('Product', { name: item.title, productId: item.id });
     }
     const renderItem= ({item})=> <ProductItem item={item} onSelected={onSelected}></ProductItem>
     return (
