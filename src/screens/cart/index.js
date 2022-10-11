@@ -1,6 +1,6 @@
 import { FlatList, Text, View } from "react-native";
 
-import { CartItem } from "../../components/cart-item";
+import  CartItem  from "../../components/cart-item";
 import React from "react";
 import {cart} from '../../constants/data'
 import { styles } from "./styles";
@@ -20,4 +20,4 @@ const Cart = ({navigation }) => {
         </View>
         )
 }
-export default Cart
+export default Cart 
