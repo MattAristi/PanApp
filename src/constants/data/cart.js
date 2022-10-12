@@ -10,7 +10,7 @@ export const cart = [
     },
     {
         id: 2,
-        categoryId: 1,
+        categoryId: 2,
         title: 'Pan frances',
         description: 'clasico y tierno pan frances',
         weight: '80gr',
