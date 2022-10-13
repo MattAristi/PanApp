@@ -9,7 +9,10 @@ const Orders = ({navigation }) => {
     const onCancel = (id)=> {
         console.warn(id);
     }
-    const renderItem=({item}) => <OrderItem item={item} onCancel={onCancel} />
+    const onSelected = (item) => {
+        navigation.navigate('Products ordered', { orderDate:item.date, orderId: item.id, items: item.items });
+    }
+    const renderItem=({item}) => <OrderItem item={item} onCancel={onCancel} onSelected={onSelected} />
     
     return (
         <View style={styles.container}>

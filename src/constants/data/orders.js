@@ -26,7 +26,7 @@ export const orders = [
         {
         id: 6,
         categoryId: 3,
-        title: "Pan de hamburguesa",
+        name: "Pan de hamburguesa",
         description: "clasico y delicioso pan de hamburguesa",
         weight: "60gr",
         price: 1.0,
@@ -60,7 +60,7 @@ export const orders = [
           {
             id: 6,
             categoryId: 3,
-            title: "Pan de hamburguesa",
+            name: "Pan de hamburguesa",
             description: "clasico y delicioso pan de hamburguesa",
             weight: "60gr",
             price: 1.0,

@@ -1,4 +1,5 @@
-import { Orders } from "../screens";
+import { Orders, ProductsOrdered } from "../screens";
+
 import React from "react";
 import { colors } from "../constants/thems";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -25,6 +26,14 @@ const OrdersNavigator = () => {
                 name='Orders'
                 component={Orders}
             />
+            <Stack.Screen
+                name='Products ordered'
+                component={ProductsOrdered}
+                options={({route}) => ({
+                    title:route.params.name
+                })}
+            />
+
         </Stack.Navigator>
         )
 }
