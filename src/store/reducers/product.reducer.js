@@ -1,4 +1,4 @@
-import {products} from '../../constants/data/products';
+import {products} from '../../constants/data';
 
 const initialState= {
     products: products,
