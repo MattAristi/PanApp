@@ -1,0 +1,4 @@
+export const productsTypes = {
+    SELECTED_PRODUCTS: 'SELECTED_PRODUCTS',
+    FILTERED_PRODUCTS: 'FILTERED_PRODUCTS',
+}
