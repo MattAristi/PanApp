@@ -12,7 +12,7 @@ const initialState= {
 const orderReducer = (state = initialState, action)=> {
     switch (action.type) {
         case ORDERED_PRODUCTS:
-            const indexOrder= state.categories.findIndex((orders) => orders.id === action.Id);
+            const indexOrder= state.orders.findIndex((orders) => orders.id === action.Id);
 
             if (indexOrder === -1) return state;
             return{
