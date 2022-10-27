@@ -8,7 +8,7 @@ const OrderDetail=({item})=>{
 
    <View style={styles.container}>
       <View style={styles.header}>
-         <Text style={styles.titulo}>{item.name}</Text>
+         <Text style={styles.titulo}>{item.title}</Text>
       </View>
       <View style={styles.content}>
          <Text style={styles.description}>{item.description}</Text>

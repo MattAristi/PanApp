@@ -16,6 +16,14 @@ export const styles = StyleSheet.create({
         borderTopWidh:2,
         paddingVertical:10,
     },
+    disabledButtonConfirm: {
+        backgroundColor: colors.gray,
+        borderRadius:5,
+        paddingHorizontal:20,
+        paddingVertical:10,
+        flexDirection: 'row',
+        justifyContent:"space-between"
+    },
     buttonConfirm: {
         backgroundColor: colors.primary,
         borderRadius:5,

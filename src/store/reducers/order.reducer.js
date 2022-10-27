@@ -1,26 +1,36 @@
 import { orderTypes } from '../types';
-import {orders} from '../../constants/data/orders';
 
-const {ORDERED_PRODUCTS}= orderTypes
+const {ORDERED_PRODUCTS, GET_ORDER, DELETE_ORDER}= orderTypes
 
 const initialState= {
-    orders: orders,
     selected: null,
+    list:[],
 
 }
 
 const orderReducer = (state = initialState, action)=> {
     switch (action.type) {
+        case GET_ORDER:
+            return {
+                ...state,
+                list: action.orders
+            }
+
         case ORDERED_PRODUCTS:
-            const indexOrder= state.orders.findIndex((orders) => orders.id === action.orderId);
+            const indexOrder= state.list.findIndex((orders) => orders.id === action.orderId);
 
             if (indexOrder === -1) return state;
             return{
                 ...state,
-                selected: state.orders[indexOrder]
+                selected: state.list[indexOrder]
             }
-            default:
-                return state;
+        case DELETE_ORDER:
+            return{
+                ...state,
+                list: state.list.filter(order => order.id !== action.id)
+            }
+        default:
+            return state;
     }
 }
 

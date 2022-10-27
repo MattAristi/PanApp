@@ -1,4 +1,5 @@
 export const orderTypes = {
     ORDERED_PRODUCTS: 'ORDERED_PRODUCTS',
-   
+    DELETE_ORDER: 'DELETE_ORDER',
+    GET_ORDER: 'GET_ORDER'
 }

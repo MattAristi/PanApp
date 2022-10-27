@@ -1,18 +1,28 @@
-import { Text, View } from "react-native"
+import { Button, Text, View } from "react-native"
+import { useDispatch, useSelector } from "react-redux";
 
+import {addToCart} from '../../store/actions';
+import react from 'react';
 import {styles} from './styles';
-import { useSelector } from "react-redux";
 
 const Product = ({navigation}) => {
+    const dispatch= useDispatch()
     const product = useSelector((state) => state.products.selected)
+
+    const{id, title, description, price, weight}= product
+
+    const addCartItem = ()=> {
+        dispatch(addToCart(product));
+    }
     
     return (
         <View style={styles.container}>
-            <Text>Id: {product.id}</Text>
-            <Text>{product.title}</Text>
-            <Text>{product.description}</Text>
-            <Text>${product.price}</Text>
-            <Text>weight: {product.weight}</Text>
+            <Text>Id: {id}</Text>
+            <Text>{title}</Text>
+            <Text>{description}</Text>
+            <Text>${price}</Text>
+            <Text>weight: {weight}</Text>
+            <Button title= 'add to cart' onPress={addCartItem} />
         </View>
     )
 }
