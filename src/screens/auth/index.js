@@ -11,13 +11,13 @@ import { useDispatch } from 'react-redux';
 const initialState= {
     email: {value:'', error:'', touched: false, hasError: true},
     password: {value:'', error:'', touched: false, hasError: true},
-    isFromValid: false,
+    isFormValid: false,
 }
 
 const formReducer = (state, action) => {
     switch (action.type) {
         case UPDATED_FORM:
-            const {name, hasError,error, touched, value, isFromValid} = action.data;
+            const {name, hasError, error, touched, value, isFormValid} = action.data;
             return {
                 ...state,
                 [name]:{
@@ -27,7 +27,7 @@ const formReducer = (state, action) => {
                     touched,
                     error,
                 },
-                isFromValid
+                isFormValid
             }
         default: 
         return state;
@@ -37,7 +37,7 @@ const formReducer = (state, action) => {
 const Auth = ({navigation})=>{
     const dispatch= useDispatch();
     const [isLogin,setIsLogin]=useState(true);
-    const [formState, dispatchFormState]= useReducer(formReducer,initialState)
+    const [formState, dispatchFormState]= useReducer( formReducer , initialState)
     const title = isLogin? 'Login':'Registro';
     const message = isLogin? '¿No tienes una cuenta? cliquea aqui':'Si ya tienes cuenta clickea aqui';
     const messageAction = isLogin? 'ingresar': 'Registrate';
@@ -87,7 +87,7 @@ const Auth = ({navigation})=>{
                 title={messageAction}
                 color={colors.primary}
                 onPress= {onHandleSubmit}
-                disabled={!formState.isFromValid}
+                disabled={!formState.isFormValid}
                 />
                 <View style={styles.prompt}>                    
                     <TouchableOpacity style={styles.promptButton} onPress={()=> setIsLogin(!isLogin)}>
