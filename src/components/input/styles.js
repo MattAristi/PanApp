@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
         
     },
     input: {
+        paddingVertical:5,
         borderBottomColor: colors.primary,
         borderBottomWidth: 1,
         width: '90%',

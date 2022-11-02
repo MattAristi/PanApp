@@ -1,10 +1,10 @@
 import { Button, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { UPDATED_FORM, onInputChange } from '../../utils/forms';
+import { UPDATED_FORM, onFocusOut, onInputChange } from '../../utils/forms';
 import react, { useReducer, useState } from 'react';
+import {signIn, signUp} from '../../store/actions';
 
 import {Input} from '../../components/index';
 import {colors} from '../../constants/thems/colors';
-import {signUp} from '../../store/actions';
 import {styles} from './styles';
 import { useDispatch } from 'react-redux';
 
@@ -43,12 +43,20 @@ const Auth = ({navigation})=>{
     const messageAction = isLogin? 'ingresar': 'Registrate';
 
     const onHandleSubmit= () =>{
-        dispatch(signUp(formState.email.value, formState.password.value))
+        const {password, email} = formState;
+        dispatch(isLogin? signIn(email.value, password.value): signUp(email.value, password.value))
         
     }
 
     const onHandleChange = (value, type) => {
+        console.log(value);
+        console.log(type);
         onInputChange(type, value, dispatchFormState, formState)
+    }
+    const onHandleBlur = (value, type) => {
+        console.log(value);
+        console.log(type);
+        onFocusOut(type, value, dispatchFormState, formState)
     }
 
     return(
@@ -64,7 +72,8 @@ const Auth = ({navigation})=>{
                     keyboardType='email-address'
                     autoCapitalize='none'
                     autoCorrect= {false}
-                    onChangeText= {(text)=> onHandleChange(text, 'email')} 
+                    onChangeText= {(text)=> onHandleChange(text, 'email')}                      
+                    onEditingEnd={(e) => onHandleBlur(e.nativeEvent.text, 'email')}
                     hasError={formState.email.hasError}
                     error= {formState.email.error}
                     touched= {formState.email.touched}
@@ -78,7 +87,8 @@ const Auth = ({navigation})=>{
                     secureTextEntry={true}
                     autoCapitalize='none'
                     autoCorrect= {false}
-                    onChangeText= {(text)=> onHandleChange(text, 'password')} 
+                    onChangeText= {(text)=> onHandleChange(text, 'password')}
+                    onEditingEnd={(e) => onHandleBlur(e.nativeEvent.text, 'password')}  
                     hasError={formState.password.hasError}
                     error= {formState.password.error}
                     touched= {formState.password.touched}

@@ -7,7 +7,7 @@ const validateInput= (name, value) => {
     let error = '';
     switch(name) {
         case 'email':
-            if (value.trim()==='') {
+            if (value?.trim()==='') {
                 hasError= true;
                 error= `El email es requerido`
             } else if(!formatEmail.test(value)){
@@ -19,7 +19,7 @@ const validateInput= (name, value) => {
             } 
             break;
         case 'password':
-            if (value.trim()==='') {
+            if (value?.trim()==='') {
                 hasError= true;
                 error= `El password es requerido`
             }else if(value.length < minPasswordLength){
@@ -45,15 +45,36 @@ export const onInputChange = (name, value, dispatch, formState)=> {
     for(const key in formState) {
         const item = formState[key];
         if(key !== name && hasError) {
-            // console.log(`1${hasError}`);
-            // console.log(`2${name}`);
-            // console.log(`3${key}`);
             isFormValid= false;
             break;
         }else if(key !== name && item.hasError) {
-            // console.log(`4${item.hasError}`);
-            // console.log(`5${name}`);
-            // console.log(`6${key}`);
+            isFormValid= false;
+            break;
+        }
+    }
+    dispatch({
+        type: UPDATED_FORM,
+        data: {
+            name,
+            value,
+            touched:false,
+            isFormValid,
+            error,
+            hasError,
+        }
+    });
+}
+
+export const onFocusOut = (name, value, dispatch, formState)=> {
+    const {hasError,error}= validateInput( name, value)
+    let isFormValid = true;
+
+    for(const key in formState) {
+        const item = formState[key];
+        if(key !== name && hasError) {
+            isFormValid= false;
+            break;
+        }else if(key !== name && item.hasError) {
             isFormValid= false;
             break;
         }
@@ -69,4 +90,5 @@ export const onInputChange = (name, value, dispatch, formState)=> {
             hasError,
         }
     });
+
 }
